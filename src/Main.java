@@ -36,17 +36,25 @@ public class Main {
         System.out.println();
         System.out.println();
         System.out.println("final answer: ");
-        System.out.println(FindMaximum(Pi,Di,3));
+        System.out.println(FindMaximum(Pi,Di,8));
     }
 
     private static int FindMaximum(int[] pi, int[] di, int i) {
         int sum=0;
-        for (int j = 0; j < i; j++) {
-            if(di[j]>= j){
-                sum = sum + pi[j];
+        int k=0;
+        while( k < pi.length){
+            if(di[k]>= k+1){
+                sum = sum+ pi[k];
             }
+            for (int j = k+1; j < pi.length; j++) {
+                if(di[j]>= k+2){
+                    sum = sum + pi[j];
+                    k++;
+                    break;
+                }
+            }
+            k++;
         }
-
 
         return sum;
     }
